@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+    <button mat-button routerLink="/home">Home</button>
+    <button mat-button routerLink="/course">Course</button>
+    <button mat-button routerLink="/contact">Contact</button>
+  
+    <button mat-button [matMenuTriggerFor]="authMenu">
+      <span class="auth-button">
+        Authentication
+        <mat-icon>arrow_drop_down</mat-icon>
+      </span>
+    </button>
+  
+    <mat-menu #authMenu="matMenu">
+        <button mat-menu-item routerLink="/login">login</button>
+        <button mat-menu-item routerLink="/signup">signup</button>
+    </mat-menu>
+      
+      
+</mat-toolbar>
+  

@@ -1,0 +1,25 @@
+.auth-button {
+    display: flex;
+    align-items: center;
+  }
+  
+.auth-button mat-icon {
+    margin-left: 4px;
+}
+.mat-toolbar {
+    font-size: 12px; 
+}
+.mat-toolbar button,
+.mat-toolbar {
+  font-size: 12px; 
+}
+.mat-toolbar button[routerLink="/course"] {
+    color: gray; 
+}
+.mat-toolbar button[routerLink="/contact"] {
+    color: gray; 
+}
+
+.auth-menu .mat-menu-panel {
+    background-color: white !important;
+}
