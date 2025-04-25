@@ -1,19 +1,55 @@
 .courses-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: space-between; 
+    margin: 20px;
+    padding-bottom: 20px;
   }
   
   .course-card {
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: calc(33.33% - 20px);
+    height: 400px; 
   }
   
-  mat-card {
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  .course-card mat-card {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .favorite-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24px;
+    color: #ff4081;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .mat-card-header {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .card-footer {
+    margin-top: auto; /* Le contenu de footer est poussé vers le bas */
+    padding: 10px;
+    flex-grow: 1; /* Permet au footer de s'étirer si nécessaire */
+  }
+  
+  .mat-card-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .mat-card-content p {
+    font-size: 9px;
+    color: #555;
   }
   

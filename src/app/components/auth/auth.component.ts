@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';  
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../services/auth/login.service';
 
 @Component({
   selector: 'app-auth',
@@ -18,21 +19,37 @@ import { CommonModule } from '@angular/common';
 export class AuthComponent implements OnInit {
   loginForm!: FormGroup;  
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginService: LoginService
+    ) {}
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
-
-  onSubmit(): void {
-    if (this.loginForm.valid) {
-      console.log('Form Submitted!', this.loginForm.value);
-      this.router.navigate(['/home']);
-    } else {
-      console.log('Form is not valid');
+    ngOnInit(): void {
+      this.loginForm = this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required]
+      });
     }
-  }
+
+    onSubmit(): void {
+      if (this.loginForm.valid) {
+        console.log('Form Submitted!', this.loginForm.value);
+  
+        const email = this.loginForm.value.email;
+        const password = this.loginForm.value.password;
+  
+        this.loginService.login(email, password).subscribe({
+          next: (response) => {
+            console.log('Authentication successful', response);
+            this.router.navigate(['/course']);
+          },
+          error: (error) => {
+            console.error('Error during authentication', error);
+          }
+        });
+      } else {
+        console.log('Form is not valid');
+      }
+    }
 }

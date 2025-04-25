@@ -1,1 +1,51 @@
-<p>contact works!</p>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <p class="contact-title">Contact Us</p>
+  
+    
+    <div class="name-container">
+      <div class="name-field">
+        <h1 class="form-title">First Name</h1>
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="firstName" placeholder="Enter your first name" required>
+          <mat-error *ngIf="contactForm.get('firstName')?.hasError('required')">Le prénom est requis</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="name-field">
+        <h1 class="form-title">Last Name</h1>
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="lastName" placeholder="Enter your last name" required>
+          <mat-error *ngIf="contactForm.get('lastName')?.hasError('required')">Le nom de famille est requis</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <h1 class="form-title">Email Address</h1>
+    <mat-form-field appearance="fill">
+      <input matInput formControlName="email" placeholder="Enter your email" required>
+      <mat-error *ngIf="contactForm.get('email')?.hasError('required')">L'email est requis</mat-error>
+      <mat-error *ngIf="contactForm.get('email')?.hasError('email')">Veuillez entrer un email valide</mat-error>
+    </mat-form-field>
+  
+    <h1 class="form-title">Phone (optional)</h1>
+    <mat-form-field appearance="fill">
+      <input matInput formControlName="phone" placeholder="Enter your phone number" required>
+      <mat-error *ngIf="contactForm.get('phone')?.hasError('required')">Le numéro de téléphone est requis</mat-error>
+    </mat-form-field>
+  
+    <h1 class="form-title">Entreprise</h1>
+    <mat-form-field appearance="fill">
+      <input matInput formControlName="entreprise" placeholder="Enter your entreprise" required>
+      <mat-error *ngIf="contactForm.get('entreprise')?.hasError('required')">L'entreprise est requise</mat-error>
+    </mat-form-field>
+  
+    <h1 class="form-title">Formation</h1>
+    <mat-form-field appearance="fill">
+      <input matInput formControlName="formation" placeholder="Enter formation" required>
+      <mat-error *ngIf="contactForm.get('formation')?.hasError('required')">La formation est requise</mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button type="submit">
+      Send
+    </button>
+</form>
